@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Rincón del MG | Menú</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --mg-main:#9c6b3f;
+  --mg-dark:#2b1a0f;
+  --mg-light:#f5efe9;
+  --mg-card:#ffffff;
+}
+
+body{
+  margin:0;
+  font-family:'Montserrat', sans-serif;
+  background:linear-gradient(to bottom,#f5efe9,#efe4da);
+  color:var(--mg-dark);
+}
+
+/* HEADER */
+
+header{
+  text-align:center;
+  padding:50px 20px 40px;
+  background:#fff;
+  border-bottom:1px solid #e0d5c8;
+}
+
+.logo-container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+header img{
+  max-width:180px;
+  height:auto;
+  margin-bottom:10px;
+}
+
+header h1{
+  margin:5px 0 0;
+  font-family:'Playfair Display', serif;
+  color:var(--mg-main);
+  font-size:2.8rem;
+}
+
+header p{
+  margin:10px 0 0;
+  letter-spacing:3px;
+  font-size:.8rem;
+  color:#777;
+}
+
+/* MENU */
+
+.menu{
+  max-width:950px;
+  margin:50px auto 120px;
+  padding:0 20px;
+}
+
+.category{
+  margin-bottom:55px;
+}
+
+.category h2{
+  font-family:'Playfair Display', serif;
+  font-size:1.6rem;
+  margin-bottom:20px;
+  color:var(--mg-main);
+}
+
+.category h2::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:2px;
+  background:var(--mg-main);
+  margin-top:8px;
+}
+
+/* ITEMS */
+
+.item{
+  background:var(--mg-card);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:20px;
+  margin-bottom:15px;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.05);
+  transition:.3s;
+}
+
+.item:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.item strong{
+  font-weight:600;
+  font-size:1.05rem;
+}
+
+.item span{
+  font-weight:600;
+  color:var(--mg-main);
+  font-size:1.1rem;
+  white-space:nowrap;
+}
+
+.star{
+  border-left:5px solid var(--mg-main);
+  background:#fffaf5;
+}
+
+em{
+  font-size:.85rem;
+  color:#777;
+}
+
+/* FOOTER */
+
+footer{
+  background:var(--mg-dark);
+  color:#ddd;
+  text-align:center;
+  padding:25px;
+  font-size:.8rem;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25D366;
+  color:#fff;
+  padding:15px 24px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:500;
+  box-shadow:0 8px 18px rgba(0,0,0,.25);
+  font-size:15px;
+  transition:.3s;
+}
+
+.whatsapp:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 25px rgba(0,0,0,.3);
+}
+
+@media(max-width:768px){
+  .item{
+    flex-direction:column;
+  }
+
+  .item span{
+    align-self:flex-end;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png" alt="Mapache y Gato - El Rincón del MG">
+    <h1>El Rincón del MG</h1>
+    <p>COMIDA RÁPIDA · SABOR CASERO</p>
+  </div>
+</header>
+
+<section class="menu">
+
+<!-- FAVORITA -->
+<div class="category">
+<h2>La Favorita de la Casa</h2>
+<div class="item star">
+<div>
+<strong>Hamburguesa MG Especial</strong><br>
+Carne especial MG, queso derretido, lechuga fresca, jitomate, guacamole y pan brioche<br>
+<em>Aderezos: mayonesa, catsup, mostaza, BBQ o chipotle</em>
+</div>
+<span>$110</span>
+</div>
+</div>
+
+<!-- CLÁSICOS -->
+<div class="category">
+<h2>Combos Clásicos</h2>
+
+<div class="item">
+<div>
+<strong>Combo MG Burger</strong><br>
+Hamburguesa sencilla (carne, queso, lechuga y jitomate)<br>
+<em>Aderezos: mayonesa, catsup y mostaza</em><br>
+Papas chicas · Refresco
+</div>
+<span>$85</span>
+</div>
+
+<div class="item">
+<div>
+<strong>Combo MG Dog</strong><br>
+2 Hot dogs (salchicha, jitomate y cebolla)<br>
+<em>Aderezos: mayonesa, catsup y mostaza</em><br>
+Papas chicas · Refresco
+</div>
+<span>$70</span>
+</div>
+</div>
+
+<!-- ANTOJOS -->
+<div class="category">
+<h2>Combos de Antojo</h2>
+
+<div class="item">
+<div>
+<strong>Combo Nuggets</strong><br>
+Nuggets crujientes (6 pzas)<br>
+Papas chicas · Refresco
+</div>
+<span>$75</span>
+</div>
+
+<div class="item">
+<div>
+<strong>Combo Boneless MG</strong><br>
+Boneless jugosos (6 pzas)<br>
+<em>Salsas: BBQ, búfalo o mango habanero</em><br>
+Papas chicas · Refresco
+</div>
+<span>$95</span>
+</div>
+
+<div class="item">
+<div>
+<strong>Combo Salchipapas</strong><br>
+Salchicha frita con papas a la francesa y chorizo<br>
+<em>Aderezos: catsup, mayonesa y mostaza</em><br>
+Refresco
+</div>
+<span>$80</span>
+</div>
+</div>
+
+<!-- TORTAS -->
+<div class="category">
+<h2>Combos de Tortas</h2>
+
+<div class="item">
+<div>
+<strong>Combo Torta Cubana</strong><br>
+Telera tostada con mantequilla, frijoles refritos, milanesa empanizada, jamón, salchicha, chorizo, pierna de cerdo, queso de puerco, queso Oaxaca y queso amarillo, aguacate, jitomate, cebolla y jalapeños<br>
+<em>Aderezos: mayonesa y mostaza</em><br>
+Papas chicas · Refresco
+</div>
+<span>$110</span>
+</div>
+
+<div class="item">
+<div>
+<strong>Combo Torta Mexa</strong><br>
+Telera tostada con mantequilla, frijoles refritos, pechuga empanizada, queso Oaxaca, aguacate, lechuga, jitomate y jalapeños<br>
+<em>Aderezo: mayonesa</em><br>
+Papas chicas · Refresco
+</div>
+<span>$95</span>
+</div>
+
+<div class="item">
+<div>
+<strong>Combo Torta de Milanesa</strong><br>
+Telera tostada con mantequilla, frijoles refritos, milanesa empanizada, queso Oaxaca o panela, aguacate, lechuga, jitomate y cebolla<br>
+<em>Aderezos: mayonesa, mostaza o chipotle</em><br>
+Papas chicas · Refresco
+</div>
+<span>$90</span>
+</div>
+
+<div class="item">
+<div>
+<strong>Combo Torta de Alambre</strong><br>
+Telera tostada con mantequilla, bistec en tiras salteado con tocino, pimiento morrón y cebolla, queso Oaxaca gratinado, aguacate y jalapeños<br>
+<em>Aderezo: mayonesa o chipotle</em><br>
+Papas chicas · Refresco
+</div>
+<span>$105</span>
+</div>
+</div>
+
+<!-- COMPARTIR -->
+<div class="category">
+<h2>Para Compartir</h2>
+
+<div class="item">
+<div>
+<strong>Combo MG Dúo</strong><br>
+2 hamburguesas sencillas<br>
+Papas grandes · 2 refrescos
+</div>
+<span>$150</span>
+</div>
+
+<div class="item">
+<div>
+<strong>Combo MG Familiar</strong><br>
+4 hamburguesas sencillas<br>
+Papas grandes · 4 refrescos
+</div>
+<span>$280</span>
+</div>
+
+</div>
+
+<!-- EXTRAS -->
+<div class="category">
+<h2>Extras</h2>
+
+<div class="item"><div>Queso extra</div><span>$10</span></div>
+<div class="item"><div>Doble carne</div><span>$25</span></div>
+<div class="item"><div>Papas grandes</div><span>$15</span></div>
+<div class="item"><div>Nuggets extra (4 pzas)</div><span>$20</span></div>
+<div class="item"><div>Refresco adicional</div><span>$20</span></div>
+
+<div class="item">
+  <div>
+    <strong>Papas con queso y tocino</strong><br>
+    <em>Papas a la francesa con queso derretido y tocino crujiente</em>
+  </div>
+  <span>$55</span>
+</div>
+
+<div class="item" style="opacity:0.6;">
+  <div>
+    <strong>Aros de cebolla (6 pzas)</strong><br>
+    <em>Disponible próximamente</em>
+  </div>
+  <span>—</span>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 El Rincón del MG<br>
+Todos nuestros platillos se preparan al momento para garantizar sabor y calidad
+</footer>
+
+<a class="whatsapp"
+href="https://api.whatsapp.com/send?phone=529831192077&text=Hola%20quiero%20hacer%20un%20pedido%20del%20menú%20El%20Rincón%20del%20MG"
+target="_blank">
+📲 Pedir por WhatsApp
+</a>
+
+</body>
+</html>
