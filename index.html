@@ -97,7 +97,6 @@ header h1{
  border-radius:12px;
  box-shadow:0 6px 18px rgba(0,0,0,0.05);
  transition:.3s;
- cursor:pointer;
 }
 
 .item:hover{
@@ -146,13 +145,38 @@ em{
  margin-bottom:15px;
 }
 
-/* FOOTER */
-footer{
- background:#1f140d;
- color:#ddd;
+/* SELECTOR */
+.qty{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ margin-top:10px;
+}
+.qty button{
+ background:var(--mg-main);
+ color:#fff;
+ border:none;
+ width:28px;
+ height:28px;
+ border-radius:6px;
+ cursor:pointer;
+}
+.qty span{
+ min-width:20px;
  text-align:center;
- padding:25px;
- font-size:.8rem;
+ font-weight:600;
+}
+
+/* CONTADOR */
+.counter{
+ position:fixed;
+ bottom:80px;
+ right:25px;
+ background:var(--mg-main);
+ color:#fff;
+ padding:10px 15px;
+ border-radius:20px;
+ font-size:.9rem;
 }
 
 /* WHATSAPP */
@@ -166,7 +190,15 @@ footer{
  border-radius:50px;
  text-decoration:none;
  font-weight:500;
- box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+footer{
+ background:#1f140d;
+ color:#ddd;
+ text-align:center;
+ padding:25px;
+ font-size:.8rem;
 }
 </style>
 </head>
@@ -188,26 +220,29 @@ footer{
 <div class="category">
 <h2>Promociones MG</h2>
 
-<div class="promo">
+<div class="promo" data-name="Combo Coreano Lovers" data-price="125">
 <strong>Combo Coreano Lovers</strong><br>
 Pollo tempura coreano con salsa gochujang dulce picante + papas + refresco<br>
 Incluye aderezo chipotle o ranch<br>
 <b>$125</b>
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
 </div>
 
-<div class="promo">
+<div class="promo" data-name="Promo Pareja MG" data-price="150">
 <strong>Promo Pareja MG</strong><br>
 2 hamburguesas clásicas (carne, queso, lechuga, jitomate)<br>
 Papas grandes + 2 refrescos<br>
 Aderezos: mayonesa, catsup y mostaza<br>
 <b>$150</b>
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
 </div>
 
-<div class="promo">
+<div class="promo" data-name="Promo Familiar MG" data-price="280">
 <strong>Promo Familiar MG</strong><br>
 4 hamburguesas clásicas + papas grandes + 4 refrescos<br>
 Incluye aderezos de la casa<br>
 <b>$280</b>
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
 </div>
 
 </div>
@@ -215,11 +250,12 @@ Incluye aderezos de la casa<br>
 <!-- FAVORITA -->
 <div class="category">
 <h2>La Favorita de la Casa</h2>
-<div class="item star">
+<div class="item star" data-name="Hamburguesa MG Especial" data-price="110">
 <div>
 <strong>Hamburguesa MG Especial</strong><br>
 Carne sazonada estilo MG, queso derretido, guacamole, lechuga, jitomate en pan brioche tostado<br>
 <em>Aderezos: mayonesa, catsup, mostaza, BBQ o chipotle</em>
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
 </div>
 <span>$110</span>
 </div>
@@ -229,22 +265,24 @@ Carne sazonada estilo MG, queso derretido, guacamole, lechuga, jitomate en pan b
 <div class="category">
 <h2>Combos Clásicos</h2>
 
-<div class="item">
+<div class="item" data-name="Combo MG Burger" data-price="85">
 <div>
 <strong>Combo MG Burger</strong><br>
 Carne, queso, lechuga, jitomate<br>
 <em>Aderezos: mayonesa, catsup y mostaza</em><br>
 Papas chicas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
 </div>
 <span>$85</span>
 </div>
 
-<div class="item">
+<div class="item" data-name="Combo MG Dog" data-price="70">
 <div>
 <strong>Combo MG Dog</strong><br>
 2 hot dogs con salchicha, jitomate y cebolla<br>
 <em>Aderezos: mayonesa, catsup y mostaza</em><br>
 Papas chicas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
 </div>
 <span>$70</span>
 </div>
@@ -253,147 +291,161 @@ Papas chicas · Refresco
 
 <!-- ANTOJOS -->
 <div class="category">
-  <h2>Combos de Antojo</h2>
+<h2>Combos de Antojo</h2>
 
-  <div class="item">
-    <div>
-      <strong>Combo Nuggets</strong><br>
-      6 nuggets crujientes<br>
-      Papas chicas · Refresco
-    </div>
-    <span>$75</span>
-  </div>
+<div class="item" data-name="Combo Nuggets" data-price="75">
+<div>
+<strong>Combo Nuggets</strong><br>
+6 nuggets crujientes<br>
+Papas chicas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$75</span>
+</div>
 
-  <div class="item">
-    <div>
-      <strong>Combo Boneless MG</strong><br>
-      Boneless con salsas BBQ, búfalo o mango habanero<br>
-      Papas chicas · Refresco
-    </div>
-    <span>$95</span>
-  </div>
+<div class="item" data-name="Combo Boneless MG" data-price="95">
+<div>
+<strong>Combo Boneless MG</strong><br>
+Boneless con salsas BBQ, búfalo o mango habanero<br>
+Papas chicas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$95</span>
+</div>
 
-  <div class="item">
-    <div>
-      <strong>Combo Salchipapas</strong><br>
-      Salchicha frita con papas y chorizo<br>
-      <em>Aderezos: catsup, mayonesa y mostaza</em><br>
-      Refresco
-    </div>
-    <span>$80</span>
-  </div>
+<div class="item" data-name="Combo Salchipapas" data-price="80">
+<div>
+<strong>Combo Salchipapas</strong><br>
+Salchicha frita con papas y chorizo<br>
+<em>Aderezos: catsup, mayonesa y mostaza</em><br>
+Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$80</span>
+</div>
 
-  <div class="item">
-    <div>
-      <strong>Combo Papas Especiales</strong><br>
-      Papas con condimento especial, queso fundido y tocino<br>
-      Refresco
-    </div>
-    <span>$85</span>
-  </div>
+<div class="item" data-name="Combo Papas Especiales" data-price="85">
+<div>
+<strong>Combo Papas Especiales</strong><br>
+Papas con condimento especial, queso fundido y tocino<br>
+Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$85</span>
+</div>
 
 </div>
 
-<!-- NUEVO PRODUCTO COREANO -->
+<!-- COREANO -->
 <div class="category">
-  <h2 style="color:#b22222;">
-    Sabores Coreanos MG <span style="background:#b22222;color:#fff;padding:3px 8px;border-radius:6px;font-size:.8rem;">NUEVO</span>
-  </h2>
+<h2 style="color:#b22222;">Sabores Coreanos MG</h2>
 
-  <div class="item star">
-    <div>
-      <strong>Pollo Tempura Coreano</strong><br>
-      Pollo crujiente con salsa coreana dulce picante estilo gochujang<br>
-      Papas · Refresco
-    </div>
-    <span>$75</span>
-  </div>
+<div class="item star" data-name="Pollo Tempura Coreano" data-price="75">
+<div>
+<strong>Pollo Tempura Coreano</strong><br>
+Pollo crujiente con salsa coreana dulce picante estilo gochujang<br>
+Papas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$75</span>
+</div>
 
-  <div class="item">
-    <div>
-      <strong>Boneless Coreanos</strong><br>
-      Boneless con salsa miel ajo coreana<br>
-      Papas · Refresco
-    </div>
-    <span>$85</span>
-  </div>
+<div class="item" data-name="Boneless Coreanos" data-price="85">
+<div>
+<strong>Boneless Coreanos</strong><br>
+Boneless con salsa miel ajo coreana<br>
+Papas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$85</span>
+</div>
 
-  <div class="item">
-    <div>
-      <strong>Alitas Coreanas</strong><br>
-      Alitas caramelizadas con salsa coreana<br>
-      Papas · Refresco
-    </div>
-    <span>$90</span>
-  </div>
+<div class="item" data-name="Alitas Coreanas" data-price="90">
+<div>
+<strong>Alitas Coreanas</strong><br>
+Alitas caramelizadas con salsa coreana<br>
+Papas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$90</span>
+</div>
 
-  <div class="item star">
-    <div>
-      <strong>Combo Coreano Especial</strong><br>
-      Pollo Tempura Coreano + Arroz Frito Coreano<br>
-      Papas · Refresco
-    </div>
-    <span>$120</span>
-  </div>
+<div class="item star" data-name="Combo Coreano Especial" data-price="120">
+<div>
+<strong>Combo Coreano Especial</strong><br>
+Pollo Tempura Coreano + Arroz Frito Coreano<br>
+Papas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$120</span>
+</div>
 </div>
 
 <!-- TORTAS -->
 <div class="category">
-  <h2>Combos de Tortas</h2>
+<h2>Combos de Tortas</h2>
 
-  <div class="item">
-    <div>
-      <strong>Combo Torta Cubana</strong><br>
-      Milanesa, jamón, salchicha, pierna, queso Oaxaca, queso amarillo, aguacate, verduras, frijoles refritos<br>
-      <em>Aderezos: mayonesa y mostaza</em><br>
-      Papas chicas · Refresco
-    </div>
-    <span>$110</span>
-  </div>
+<div class="item" data-name="Combo Torta Cubana" data-price="110">
+<div>
+<strong>Combo Torta Cubana</strong><br>
+Milanesa, jamón, salchicha, pierna, queso Oaxaca, queso amarillo, aguacate, verduras, frijoles refritos<br>
+<em>Aderezos: mayonesa y mostaza</em><br>
+Papas chicas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$110</span>
+</div>
 
-  <div class="item">
-    <div>
-      <strong>Combo Torta Mexa</strong><br>
-      Pechuga empanizada, queso Oaxaca, aguacate, lechuga, jitomate, frijoles refritos<br>
-      <em>Aderezo: mayonesa</em><br>
-      Papas chicas · Refresco
-    </div>
-    <span>$95</span>
-  </div>
+<div class="item" data-name="Combo Torta Mexa" data-price="95">
+<div>
+<strong>Combo Torta Mexa</strong><br>
+Pechuga empanizada, queso Oaxaca, aguacate, lechuga, jitomate, frijoles refritos<br>
+<em>Aderezo: mayonesa</em><br>
+Papas chicas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$95</span>
+</div>
 
-  <div class="item">
-    <div>
-      <strong>Combo Torta Alambre MG</strong><br>
-      Pollo, pimientos, cebolla, champiñón, tocino, queso fundido, frijoles refritos<br>
-      <em>Aderezos: mayonesa y chipotle</em><br>
-      Papas chicas · Refresco
-    </div>
-    <span>$115</span>
-  </div>
+<div class="item" data-name="Combo Torta Alambre MG" data-price="115">
+<div>
+<strong>Combo Torta Alambre MG</strong><br>
+Pollo, pimientos, cebolla, champiñón, tocino, queso fundido, frijoles refritos<br>
+<em>Aderezos: mayonesa y chipotle</em><br>
+Papas chicas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$115</span>
+</div>
 
-  <div class="item">
-    <div>
-      <strong>Combo Torta de Empanizado</strong><br>
-      Pollo o puerco empanizado, queso Oaxaca, aguacate, lechuga, jitomate, frijoles refritos<br>
-      <em>Aderezos: mayonesa y mostaza</em><br>
-      Papas chicas · Refresco
-    </div>
-    <span>$100</span>
-  </div>
+<div class="item" data-name="Combo Torta de Empanizado" data-price="100">
+<div>
+<strong>Combo Torta de Empanizado</strong><br>
+Pollo o puerco empanizado, queso Oaxaca, aguacate, lechuga, jitomate, frijoles refritos<br>
+<em>Aderezos: mayonesa y mostaza</em><br>
+Papas chicas · Refresco
+<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div>
+</div>
+<span>$100</span>
+</div>
 
 </div>
 
 <!-- EXTRAS -->
 <div class="category">
-  <h2>Extras</h2>
-  <div class="item"><div>Queso extra</div><span>$10</span></div>
-  <div class="item"><div>Doble carne</div><span>$25</span></div>
-  <div class="item"><div>Papas grandes</div><span>$15</span></div>
-  <div class="item"><div>Refresco adicional</div><span>$20</span></div>
-  <div class="item upcoming">
-    <div>Aros de cebolla</div>
-    <span>Próximamente</span>
-  </div>
+<h2>Extras</h2>
+
+<div class="item" data-name="Queso extra" data-price="10"><div>Queso extra<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div></div><span>$10</span></div>
+
+<div class="item" data-name="Doble carne" data-price="25"><div>Doble carne<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div></div><span>$25</span></div>
+
+<div class="item" data-name="Papas grandes" data-price="15"><div>Papas grandes<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div></div><span>$15</span></div>
+
+<div class="item" data-name="Refresco adicional" data-price="20"><div>Refresco adicional<div class="qty"><button onclick="updateQty(this,-1)">-</button><span>0</span><button onclick="updateQty(this,1)">+</button></div></div><span>$20</span></div>
+
+<div class="item upcoming"><div>Aros de cebolla</div><span>Próximamente</span></div>
+
+</div>
 
 </section>
 
@@ -401,38 +453,74 @@ Papas chicas · Refresco
 © 2026 El Rincón del MG · Street Gourmet
 </footer>
 
-<a class="whatsapp" href="#" target="_blank">
-Pedir por WhatsApp
-</a>
+<div class="counter" id="counter">🛒 0 productos</div>
+
+<a class="whatsapp" href="#">Pedir por WhatsApp</a>
 
 <script>
-let carrito = [];
+let cart = JSON.parse(localStorage.getItem("mg_cart")) || {};
 
-document.querySelectorAll(".item").forEach(item => {
-  item.addEventListener("click", () => {
-    let nombre = item.querySelector("strong")?.innerText || "Producto";
-    let precio = item.querySelector("span")?.innerText || "";
-    carrito.push(nombre + " " + precio);
-    item.style.border = "2px solid #25D366";
-  });
-});
+function updateQty(btn, change){
+ const item = btn.closest("[data-name]");
+ if(!item) return;
+ const name = item.dataset.name;
+ const price = parseFloat(item.dataset.price || 0);
+ const span = btn.parentElement.querySelector("span");
+
+ let qty = parseInt(span.innerText) || 0;
+ qty += change;
+ if(qty < 0) qty = 0;
+
+ span.innerText = qty;
+
+ if(qty === 0){
+   delete cart[name];
+ } else {
+   cart[name] = {qty, price};
+ }
+
+ localStorage.setItem("mg_cart", JSON.stringify(cart));
+ updateCounter();
+}
+
+function updateCounter(){
+ let total = 0;
+ Object.values(cart).forEach(i=> total += i.qty);
+ document.getElementById("counter").innerText = "🛒 " + total + " productos";
+}
+
+function loadCart(){
+ document.querySelectorAll("[data-name]").forEach(item=>{
+   const name = item.dataset.name;
+   const span = item.querySelector(".qty span");
+   if(cart[name] && span){
+     span.innerText = cart[name].qty;
+   }
+ });
+}
+
+function generateMessage(){
+ let msg = "Hola, quiero pedir:%0A";
+ let total = 0;
+
+ for(let item in cart){
+   let i = cart[item];
+   msg += `- ${item} x${i.qty}%0A`;
+   total += i.qty * i.price;
+ }
+
+ msg += `%0ATotal: $${total}`;
+ return msg;
+}
 
 document.querySelector(".whatsapp").addEventListener("click", function(e){
-  e.preventDefault();
-
-  let mensaje = "Hola, quiero pedir:\\n\\n";
-
-  if(carrito.length === 0){
-    mensaje += "Aún no selecciono productos";
-  } else {
-    carrito.forEach(p => {
-      mensaje += "• " + p + "\\n";
-    });
-  }
-
-  let url = "https://api.whatsapp.com/send?phone=529831192077&text=" + encodeURIComponent(mensaje);
-  window.open(url, "_blank");
+ e.preventDefault();
+ const msg = generateMessage();
+ window.open(`https://api.whatsapp.com/send?phone=529831192077&text=${msg}`);
 });
+
+loadCart();
+updateCounter();
 </script>
 
 </body>
